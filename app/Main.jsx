@@ -82,7 +82,7 @@ function Main() {
           <Password
             isVisitorView={isVisitorView}
             setIsVisitorView={setIsVisitorView}
-            correctPassword="2025">
+            correctPassword="2026">
             <Store isVisitorView={isVisitorView} />
           </Password>
         );

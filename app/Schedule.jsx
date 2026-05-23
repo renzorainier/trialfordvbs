@@ -34,7 +34,7 @@ function Schedule() {
     {
       name: "Juniors",
       db3Path: "sched2025/juniors",
-      db3Path: "sched2025/juniors",
+      // db3Path: "sched2025/juniors",
       color: "#027df7",
     },
     {

@@ -405,12 +405,12 @@ const VoiceChatComponent = () => {
         <div
           className={`fixed top-5 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full flex items-center justify-center transition-all duration-200 z-40 backdrop-blur-md border shadow-2xl`}
           style={{
-            backgroundColor: isOverEndCallArea ? "rgba(255, 0, 0, 0.4)" : "rgba(255, 255, 255, 0.1)",
+            backgroundColor: isOverEndCallArea ? "rgba(255, 0, 0, 0.6)" : "rgba(0, 0, 0, 0.4)", /* Darker background */
             color: "#FFFFFF",
-            borderColor: isOverEndCallArea ? "rgba(255, 0, 0, 0.8)" : "rgba(255, 255, 255, 0.2)",
+            borderColor: isOverEndCallArea ? "rgba(255, 0, 0, 0.8)" : "rgba(255, 255, 255, 0.3)", /* Slightly darker border */
             boxShadow: isOverEndCallArea
-              ? "0 0 30px rgba(255, 0, 0, 0.6)"
-              : "0 8px 32px rgba(0,0,0,0.3)",
+              ? "0 0 30px rgba(255, 0, 0, 0.8)"
+              : "0 8px 32px rgba(0,0,0,0.5)", /* Darker shadow */
             zIndex: 51,
           }}
         >
@@ -431,6 +431,7 @@ const VoiceChatComponent = () => {
         style={{
           left: position.x,
           top: position.y,
+          background: "rgba(0, 0, 0, 0.4)", /* Darker background */
           transition: startAnimation ? "left 0.7s ease-out, top 0.3s ease-out" : "none",
           userSelect: "none",
           MozUserSelect: "none",
@@ -521,8 +522,13 @@ const VoiceChatComponent = () => {
       {callEnded && !joined && (
         <button
           onClick={joinChannel}
-          className="fixed bottom-5 right-5 z-50 w-20 h-20 rounded-full flex items-center justify-center text-purple-300 text-lg font-bold bg-purple-500/10 backdrop-blur-lg border border-purple-500/50 transition-all duration-300 ease-in-out hover:scale-105 hover:bg-purple-500/20"
-          style={{ boxShadow: "0 0 20px rgba(204, 0, 255, 0.3)" }}
+          className="fixed bottom-5 right-5 z-50 w-20 h-20 rounded-full flex items-center justify-center text-purple-300 text-lg font-bold backdrop-blur-lg transition-all duration-300 ease-in-out hover:scale-105"
+          style={{
+            backgroundColor: "rgba(128, 0, 128, 0.3)", /* Darker purple background */
+            border: "1px solid rgba(204, 0, 255, 0.7)", /* Darker purple border */
+            boxShadow: "0 0 20px rgba(204, 0, 255, 0.5)", /* Darker shadow */
+            zIndex: 50,
+          }}
         >
           <FaPhone className="w-8 h-8" />
         </button>

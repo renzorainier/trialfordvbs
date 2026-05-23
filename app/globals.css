@@ -12,7 +12,7 @@
 body {
   margin: 0;
   height: 100vh; /* Note: I fixed the "100v" typo here to "100vh" */
-  background: linear-gradient(-30deg, #151136, #2D256F, #69269A, #2D256F, #151136);
+  /* background: linear-gradient(-30deg, #151136, #192582, #26649A, #192582, #151136); */
   background-size: 400% 400%;
   animation: bg 20s ease infinite;
   color: var(--foreground);

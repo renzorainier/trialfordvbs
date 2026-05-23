@@ -5,19 +5,58 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCqWJLDMee6M4SexWRSPtSOxqCza7pqZ2U",
-  authDomain: "dvbs2025-53fe4.firebaseapp.com",
-  projectId: "dvbs2025-53fe4",
-  storageBucket: "dvbs2025-53fe4.firebasestorage.app",
-  messagingSenderId: "947229774723",
-  appId: "1:947229774723:web:9ca40961e7a98bc4239cb6"
-
+  apiKey: "AIzaSyCGJ46Vfyu5AnBZSCDOCFYS5NSCuBQ4ehU",
+  authDomain: "dvbs2026day1.firebaseapp.com",
+  projectId: "dvbs2026day1",
+  storageBucket: "dvbs2026day1.firebasestorage.app",
+  messagingSenderId: "182307953269",
+  appId: "1:182307953269:web:8596e92eceb894a643f63c",
+  measurementId: "G-NPQDJ6LPQW"
 
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
+
+//2026 
+
+//day 1
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCGJ46Vfyu5AnBZSCDOCFYS5NSCuBQ4ehU",
+//   authDomain: "dvbs2026day1.firebaseapp.com",
+//   projectId: "dvbs2026day1",
+//   storageBucket: "dvbs2026day1.firebasestorage.app",
+//   messagingSenderId: "182307953269",
+//   appId: "1:182307953269:web:8596e92eceb894a643f63c",
+//   measurementId: "G-NPQDJ6LPQW"
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//2025 pa ito boss
 //orig
   // apiKey: "AIzaSyCqWJLDMee6M4SexWRSPtSOxqCza7pqZ2U",
   // authDomain: "dvbs2025-53fe4.firebaseapp.com",

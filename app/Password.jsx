@@ -27,6 +27,9 @@ const Password = ({
       setAttempts(newAttempts);
       if (newAttempts >= 10) {
         setError("Pogi talaga si Renz");
+        if (newAttempts >= 15) {
+          setError("Pogi talaga si Renz. Ask mo nalang si Renz kung anong password, Thanks :)");
+        } 
       } else {
         setError("Incorrect PIN. Please try again."); // Set error message
       }
