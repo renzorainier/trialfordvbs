@@ -5,44 +5,6 @@
 import { useEffect } from 'react';
 
 export default function RootLayout({ children }) {
-  useEffect(() => {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then(registration => {
-          console.log('Service Worker registered with scope:', registration.scope);
-
-          registration.onupdatefound = () => {
-            const installingWorker = registration.installing;
-            installingWorker.onstatechange = () => {
-              console.log('Service Worker state changed:', installingWorker.state);
-
-              if (installingWorker.state === 'installed') {
-                if (navigator.serviceWorker.controller) {
-                  // New update available
-                  showUpdateNotification();
-                } else {
-                  // Content is cached for offline use
-                  console.log('Content cached for offline use.');
-                }
-              }
-            };
-          };
-        })
-        .catch(error => {
-          console.error('Service Worker registration failed:', error);
-        });
-
-      let refreshing;
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        console.log('Service Worker controller changed.');
-
-        if (refreshing) return;
-        window.location.reload();
-        refreshing = true;
-      });
-    }
-  }, []);
-
   const showUpdateNotification = () => {
     console.log('New version available. Please refresh.');
 
@@ -69,6 +31,53 @@ export default function RootLayout({ children }) {
     notification.appendChild(refreshButton);
     document.body.appendChild(notification);
   };
+
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      // In development, unregister any stale service workers and bail out
+      if (process.env.NODE_ENV === "development" || process.env.NODE_ENV === "dev") {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          for (const registration of registrations) {
+            registration.unregister();
+          }
+        });
+        return;
+      }
+
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('Service Worker registered with scope:', registration.scope);
+
+          registration.onupdatefound = () => {
+            const installingWorker = registration.installing;
+            if (!installingWorker) return;
+            installingWorker.onstatechange = () => {
+              console.log('Service Worker state changed:', installingWorker.state);
+
+              if (installingWorker.state === 'installed') {
+                if (navigator.serviceWorker.controller) {
+                  showUpdateNotification();
+                } else {
+                  console.log('Content cached for offline use.');
+                }
+              }
+            };
+          };
+        })
+        .catch(error => {
+          console.error('Service Worker registration failed:', error);
+        });
+
+      let refreshing;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        console.log('Service Worker controller changed.');
+
+        if (refreshing) return;
+        window.location.reload();
+        refreshing = true;
+      });
+    }
+  }, []);
 
   return <>{children}</>;
 }
